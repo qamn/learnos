@@ -1,0 +1,10 @@
+nasm boot/boot.asm -o boot.bin
+dd if=boot.bin of=./boot.img bs=512 count=1 conv=notrunc
+bochs -f ./bochsrc
+
+nasm bootloader/loader.asm -o loader.bin
+
+sudo mount ./boot.img /media/floppy0 -t vfat -o loop
+sudo cp ./loader.bin /media/floppy0/
+sync
+sudo umount /media/floppy0
