@@ -4,7 +4,7 @@
 
 #include <stdarg.h>
 #include "font.h"
-#include "linkage.h"
+#include "../lib/linkage.h"
 
 #define ZEROPAD	1		/* pad with zero */
 #define SIGN	2		/* unsigned/signed long */
@@ -34,12 +34,19 @@ char buf[4096]={0};
 
 struct position
 {
+	//分辨率
 	int XResolution;
 	int YResolution;
+
+	//光标位置
 	int XPosition;
 	int YPosition;
+
+	//字符像素矩阵的宽高
 	int XCharSize;
 	int YCharSize;
+
+	//显示缓存的起始和容量
 	unsigned int * FB_addr;
 	unsigned long FB_length;
 }Pos;

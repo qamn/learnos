@@ -1,7 +1,7 @@
 #include <stdarg.h>
 #include "printk.h"
-#include "lib.h"
-#include "linkage.h"
+#include "../lib/lib.h"
+#include "../lib/linkage.h"
 
 
 void putchar(unsigned int * fb,int Xsize,int x,int y,unsigned int FRcolor,unsigned int BKcolor,unsigned char font){
@@ -15,7 +15,7 @@ void putchar(unsigned int * fb,int Xsize,int x,int y,unsigned int FRcolor,unsign
 	{
 		addr = fb + Xsize * ( y + i ) + x;
 		testval = 0x100;
-		for(j = 0;j < 8;j ++)		
+		for(j = 0;j < 8;j ++)
 		{
 			testval = testval >> 1;
 			if(*fontp & testval)
@@ -100,12 +100,10 @@ int vsprintf(char * buf,const char *fmt, va_list args)
 	int field_width;
 	int precision;
 	int len,i;
-
 	int qualifier;		/* 'h', 'l', 'L' or 'Z' for integer fields */
 
 	for(str = buf; *fmt; fmt++)
 	{
-
 		if(*fmt != '%')
 		{
 			*str++ = *fmt;
@@ -171,7 +169,6 @@ int vsprintf(char * buf,const char *fmt, va_list args)
 			switch(*fmt)
 			{
 				case 'c':
-
 					if(!(flags & LEFT))
 						while(--field_width > 0)
 							*str++ = ' ';
@@ -181,7 +178,6 @@ int vsprintf(char * buf,const char *fmt, va_list args)
 					break;
 
 				case 's':
-				
 					s = va_arg(args,char *);
 					if(!s)
 						s = '\0';
@@ -285,9 +281,7 @@ int color_printk(unsigned int FRcolor,unsigned int BKcolor,const char * fmt,...)
 	int line = 0;
 	va_list args;
 	va_start(args, fmt);
-
-	i = vsprintf(buf,fmt, args);
-
+	i = vsprintf(buf,fmt, args); // 将格式化后的字符串保存到缓冲区buf处
 	va_end(args);
 
 	for(count = 0;count < i || line;count++)
@@ -317,7 +311,6 @@ int color_printk(unsigned int FRcolor,unsigned int BKcolor,const char * fmt,...)
 		else if((unsigned char)*(buf + count) == '\t')
 		{
 			line = ((Pos.XPosition + 8) & ~(8 - 1)) - Pos.XPosition;
-
 Label_tab:
 			line--;
 			putchar(Pos.FB_addr , Pos.XResolution , Pos.XPosition * Pos.XCharSize , Pos.YPosition * Pos.YCharSize , FRcolor , BKcolor , ' ');	

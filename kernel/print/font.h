@@ -1,6 +1,11 @@
 #ifndef __FONT_H__
 #define __FONT_H__
 
+
+/*
+每个字符可以是16*8的像素矩阵, 可以用1个数组表示;
+用256个数组来表示
+*/
 unsigned char font_ascii[256][16]=
 {
 	/*	0000	*/

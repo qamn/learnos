@@ -1,5 +1,5 @@
-#include "lib.h"
-#include "printk.h"
+#include "lib/lib.h"
+#include "print/printk.h"
 
 void Start_Kernel(void)
 {
