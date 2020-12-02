@@ -1,3 +1,6 @@
+#include "lib.h"
+#include "printk.h"
+
 void Start_Kernel(void)
 {
 	int *addr = (int *)0xffff800000a00000; // 显示器的帧缓冲地址
@@ -31,6 +34,9 @@ void Start_Kernel(void)
 		*((char *)addr+3)=(char)0x00;	
 		addr +=1;	
 	}
+
+	color_printk(YELLOW, BLACK, "Hello\t\t World!\n");
+	
 
 	while(1)
 		;
