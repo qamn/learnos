@@ -21,6 +21,9 @@ void Start_Kernel(void)
 	color_printk(YELLOW, BLACK, "Hello World!\n");
 	color_printk(YELLOW, BLACK, "This is a number:%d!\n",10);
 	
+	i = 1/0;
+
+
 	while(1)
 		;
 }
