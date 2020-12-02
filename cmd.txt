@@ -1,5 +1,5 @@
-nasm boot/boot.asm -o boot.bin
-dd if=boot.bin of=./boot.img bs=512 count=1 conv=notrunc
+nasm bootloader/boot.asm -o boot.bin
+dd if=boot.bin of=./a.img bs=512 count=1 conv=notrunc
 bochs -f ./bochsrc
 
 nasm bootloader/loader.asm -o loader.bin

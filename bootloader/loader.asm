@@ -1,11 +1,17 @@
 org 10000h
 
-	jmp Label_Start
-
 RootDirSectors	equ	14
 SectorNumOfRootDirStart	equ	19
 SectorNumOfFAT1Start	equ	1
 SectorBalance	equ	17	
+
+BaseOfKernelFile	equ	0x0000 ; kernel的段地址为0
+OffsetOfKernelFile	equ	0x100000 ; kernel的偏移是100000
+BaseTmpOfKernelAddr	equ	0x0000 ; kernel临时空间的段地址为0
+OffsetTmpOfKernelFile	equ	0x7E00 ; kernel临时空间的偏移地址为 7E00
+MemoryStructBufferAddr	equ	0x7E00 ; 内存信息结构体缓存的地址
+
+	jmp	Label_Start
 
 	BS_OEMName	db	'MINEboot'
 	BPB_BytesPerSec	dw	512
@@ -25,34 +31,34 @@ SectorBalance	equ	17
 	BS_BootSig	db	29h
 	BS_VolID	dd	0
 	BS_VolLab	db	'boot loader'
-	BS_FileSysType	db	'FAT12'
-
-BaseOfKernelFile	equ	0x0000 ; kernel的段地址为0
-OffsetOfKernelFile	equ	0x100000 ; kernel的偏移是100000
-BaseTmpOfKernelAddr	equ	0x0000 ; kernel临时空间的段地址为0
-OffsetTmpOfKernelFile	equ	0x7E00 ; kernel临时空间的偏移地址为 7E00
-MemoryStructBufferAddr	equ	0x7E00 ; 内存信息结构体缓存的地址
+	BS_FileSysType	db	'FAT12   '
 
 
 [SECTION gdt]
 LABEL_GDT:		
-dd	0,0
-LABEL_DESC_CODE32:	dd	0x0000FFFF,0x00CF9A00 ; 段地址0,无限长,代码段,只读
-LABEL_DESC_DATA32:	dd	0x0000FFFF,0x00CF9200 ; 段地址0,无限长,数据段,可读写
+	dd	0,0
+LABEL_DESC_CODE32:	
+	dd	0x0000FFFF,0x00CF9A00 ; 段地址0,无限长,代码段,只读
+LABEL_DESC_DATA32:	
+	dd	0x0000FFFF,0x00CF9200 ; 段地址0,无限长,数据段,可读写
 GdtLen	equ	$ - LABEL_GDT ; GDT长度
-GdtPtr	dw	GdtLen - 1 ; 长度
-		dd	LABEL_GDT ; 地址
+GdtPtr:
+	dw	GdtLen - 1 ; 长度
+	dd	LABEL_GDT ; 地址
 SelectorCode32	equ	LABEL_DESC_CODE32 - LABEL_GDT ; 代码段在GDT中的偏移,就是索引
 SelectorData32	equ	LABEL_DESC_DATA32 - LABEL_GDT
 
 [SECTION gdt64]
 LABEL_GDT64:		
-dq	0x0000000000000000
-LABEL_DESC_CODE64:	dq	0x0020980000000000
-LABEL_DESC_DATA64:	dq	0x0000920000000000
+	dq	0x0000000000000000
+LABEL_DESC_CODE64:	
+	dq	0x0020980000000000
+LABEL_DESC_DATA64:	
+	dq	0x0000920000000000
 GdtLen64	equ	$ - LABEL_GDT64
-GdtPtr64	dw	GdtLen64 - 1
-			dd	LABEL_GDT64
+GdtPtr64:	
+	dw	GdtLen64 - 1
+	dd	LABEL_GDT64
 SelectorCode64	equ	LABEL_DESC_CODE64 - LABEL_GDT64
 SelectorData64	equ	LABEL_DESC_DATA64 - LABEL_GDT64
 
@@ -71,7 +77,7 @@ Label_Start:
 	mov	ax,	1301h
 	mov	bx,	000fh
 	mov	dx,	0200h		;row 2
-	mov	cx,	12
+	mov	cx,	18
 	push	ax
 	mov	ax,	ds
 	mov	es,	ax
@@ -103,6 +109,7 @@ Label_Start:
 	xor	ah,	ah
 	xor	dl,	dl
 	int	13h
+
 
 ; 搜索kernel
 	mov	word	[SectorNo],	SectorNumOfRootDirStart
@@ -341,7 +348,6 @@ Label_Get_Mem_OK:
 	pop	ax
 	mov	bp,	GetSVGAVBEInfoErrMessage
 	int	10h
-
 	jmp	$
 
 GetSVGAOK:
@@ -431,6 +437,7 @@ Label_SVGA_Mode_Info_Finish:
 	mov	bp,	GetSVGAModeInfoOKMessage
 	int	10h
 
+
 ; 设置SVGA模式
 	mov	ax,	4F02h
 	mov	bx,	4180h	; mode 0x180: 900行1440列, 物理地址 0xe000_0000
@@ -440,13 +447,13 @@ Label_SVGA_Mode_Info_Finish:
 	jnz	Label_SET_SVGA_Mode_VESA_VBE_FAIL
 
 ; 进入保护模式
-cli			;======close interrupt
+	cli			;======close interrupt
 
 	db	0x66
 	lgdt	[GdtPtr]
 
-;	db	0x66
-;	lidt	[IDT_POINTER]
+	db	0x66
+	lidt	[IDT_POINTER]
 
 	mov	eax,	cr0
 	or	eax,	1
@@ -534,6 +541,9 @@ support_long_mode_done:
 no_support:
 	jmp	$
 
+
+[SECTION .s16lib]
+[BITS 16]
 ; 函数, 读取一个扇区
 Func_ReadOneSector:
 	push	bp
@@ -643,7 +653,6 @@ IDT_POINTER:
 		dw	IDT_END - IDT - 1
 		dd	IDT
 
-
 ; 临时变量
 RootDirSizeForLoop	dw	RootDirSectors
 SectorNo		dw	0
@@ -652,7 +661,7 @@ OffsetOfKernelFileCount	dd	OffsetOfKernelFile
 DisplayPosition		dd	0
 
 ; 要显示的字符串
-StartLoaderMessage:	db	"Start Loader"
+StartLoaderMessage:	db	"Start Loader......"
 NoLoaderMessage:	db	"ERROR:No KERNEL Found"
 KernelFileName:		db	"KERNEL  BIN",0
 StartGetMemStructMessage:	db	"Start Get Memory Struct."

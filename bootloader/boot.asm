@@ -58,7 +58,7 @@ Label_Start:
 	mov	ax,	1301h
 	mov	bx,	000fh
 	mov	dx,	0000h
-	mov	cx,	16
+	mov	cx,	NoLoaderMessage-StartMessage
 	push	ax
 	mov	ax,	ds
 	mov	es,	ax
@@ -244,7 +244,7 @@ SectorNo:		dw	0
 Odd:			db	0
 
 ;要显示的字符串
-StartMessage: db "Start Boot......"
+StartMessage: db "Start_Boot_1_2_3_4_5"
 NoLoaderMessage:	db	"ERROR:No LOADER Found"
 LoaderFileName:		db	"LOADER  BIN",0
 
