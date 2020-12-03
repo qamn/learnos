@@ -1,4 +1,4 @@
-#include "linkage.h"
+#include "../lib/linkage.h"
 
 R15	=	0x00
 R14	=	0x08
@@ -78,11 +78,11 @@ error_code:
 	pushq	%r12
 	pushq	%r13
 	pushq	%r14
-	pushq	%r15	
-	
+	pushq	%r15
+
 	cld
 	movq	ERRCODE(%rsp),	%rsi
-	movq	FUNC(%rsp),	%rdx	
+	movq	FUNC(%rsp),	%rdx
 
 	movq	$0x10,	%rdi
 	movq	%rdi,	%ds
@@ -93,15 +93,14 @@ error_code:
 
 	callq 	*%rdx
 
-	jmp	ret_from_exception	
+	jmp	ret_from_exception
 
 ENTRY(divide_error)
 	pushq	$0
 	pushq	%rax
 	leaq	do_divide_error(%rip),	%rax
-	xchgq	%rax,	(%rsp) ; 交换指令交换两个寄存器的值
-	jmp error_code
-
+	xchgq	%rax,	(%rsp)
+	jmp	error_code
 
 ENTRY(debug)
 	pushq	$0

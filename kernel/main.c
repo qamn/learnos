@@ -1,5 +1,6 @@
-#include "lib/lib.h"
 #include "print/printk.h"
+#include "interrupt/gate.h"
+#include "interrupt/trap.h"
 
 void Start_Kernel(void)
 {
@@ -20,10 +21,25 @@ void Start_Kernel(void)
 
 	color_printk(YELLOW, BLACK, "Hello World!\n");
 	color_printk(YELLOW, BLACK, "This is a number:%d!\n",10);
-	
+
+	load_TR(8);
+
+	color_printk(YELLOW, BLACK, "tr loaded\n");
+
+	set_tss64( // 目前所有的栈指针都是7c00
+	        0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00,
+            0xffff800000007c00
+	        );
+    sys_vector_init();
 	i = 1/0;
 
-
-	while(1)
-		;
+	while(1);
 }
