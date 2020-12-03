@@ -3,6 +3,10 @@
 #include "interrupt/trap.h"
 #include "memory/memory.h"
 
+// 全局的内存描述符
+struct Global_Memory_Descriptor memory_management_struct = {{0},0};
+
+
 void Start_Kernel(void)
 {
 	int *addr = (int *)0xffff800000a00000; // 显示器的帧缓冲地址

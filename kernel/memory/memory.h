@@ -4,6 +4,24 @@
 #include "../print/printk.h"
 #include "../lib/lib.h"
 
+
+struct E820
+{
+    unsigned long address;
+    unsigned long length;
+    unsigned int	type;
+}__attribute__((packed));
+
+struct Global_Memory_Descriptor
+{
+    struct E820 	e820[32];
+    unsigned long 	e820_length;
+};
+
+extern struct Global_Memory_Descriptor memory_management_struct;
+
+void init_memory();
+
 //页表项个数：每个页表4KB，每项8B，即512项
 #define PTRS_PER_PAGE	512
 
@@ -20,14 +38,15 @@
 #define PAGE_2M_MASK	(~ (PAGE_2M_SIZE - 1)) //后面21个0,前面全是1,用来去掉后面的21位,即2M对齐
 #define PAGE_4K_MASK	(~ (PAGE_4K_SIZE - 1)) //后面12个0,前面全是1,用来去掉后面的12位,即4k对齐
 
-//地址加上
+//地址加上 2M 之后取前缀, 得到2M页的上界, 本质上就是向后移动到2M对齐的物理地址
 #define PAGE_2M_ALIGN(addr)	(((unsigned long)(addr) + PAGE_2M_SIZE - 1) & PAGE_2M_MASK)
-
 #define PAGE_4K_ALIGN(addr)	(((unsigned long)(addr) + PAGE_4K_SIZE - 1) & PAGE_4K_MASK)
 
+// 当前是统一映射, 所以虚拟到物理直接减去ffff8......即可, 相反, 物理加上ffff8...就得到虚拟
 #define Virt_To_Phy(addr)	((unsigned long)(addr) - PAGE_OFFSET)
 #define Phy_To_Virt(addr)	((unsigned long *)((unsigned long)(addr) + PAGE_OFFSET))
 
+// 
 #define Virt_To_2M_Page(kaddr)	(memory_management_struct.pages_struct + (Virt_To_Phy(kaddr) >> PAGE_2M_SHIFT))
 #define Phy_to_2M_Page(kaddr)	(memory_management_struct.pages_struct + ((unsigned long)(kaddr) >> PAGE_2M_SHIFT))
 
@@ -106,23 +125,6 @@ typedef struct {unsigned long pt;} pt_t;
 #define set_pt(ptptr,ptval)		(*(ptptr) = (ptval))
 
 
-struct E820
-{
-    unsigned long address;
-    unsigned long length;
-    unsigned int	type;
-}__attribute__((packed));
-
-struct Global_Memory_Descriptor
-{
-    struct E820 	e820[32];
-    unsigned long 	e820_length;
-};
-
-
-extern struct Global_Memory_Descriptor memory_management_struct;
-
-void init_memory();
 
 
 #endif
