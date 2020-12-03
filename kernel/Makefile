@@ -7,8 +7,8 @@ all: system
 # -b 输入文件的格式
 # -z muldefs 可以重复定义,只使用其中一个
 # -T 提供链接脚本
-system:	head.o main.o printk.o entry.o trap.o
-	ld -b elf64-x86-64 -z muldefs -o system head.o entry.o main.o printk.o trap.o -T Kernel.lds
+system:	head.o main.o printk.o entry.o trap.o memory.o
+	ld -b elf64-x86-64 -z muldefs -o system head.o entry.o main.o printk.o trap.o memory.o -T Kernel.lds
 
 # -E 只进行预处理
 head.o:	head.S
@@ -31,6 +31,9 @@ printk.o: print/printk.c
 
 trap.o: interrupt/trap.c
 	gcc -mcmodel=large -fno-builtin -fno-stack-protector -m64 -c interrupt/trap.c
+
+memory.o: memory/memory.c
+	gcc -mcmodel=large -fno-builtin -fno-stack-protector -m64 -c memory/memory.c
 
 clean:
 	rm -rf *.o *.s~ *.s *.S~ *.c~ *.h~ system  Makefile~ Kernel.lds~ kernel.bin 

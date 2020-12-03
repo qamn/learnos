@@ -1,6 +1,7 @@
 #include "print/printk.h"
 #include "interrupt/gate.h"
 #include "interrupt/trap.h"
+#include "memory/memory.h"
 
 void Start_Kernel(void)
 {
@@ -26,7 +27,7 @@ void Start_Kernel(void)
 
 	color_printk(YELLOW, BLACK, "tr loaded\n");
 
-	set_tss64( // 目前所有的栈指针都是7c00
+	set_tss64( // 目前所有ist内的栈指针都是7c00，真正用到的是ist1
 	        0xffff800000007c00,
             0xffff800000007c00,
             0xffff800000007c00,
@@ -39,7 +40,10 @@ void Start_Kernel(void)
             0xffff800000007c00
 	        );
     sys_vector_init();
-	i = 1/0;
+
+    // 得到可用内存段:00000000_00000000开始的9f000字节，即636k
+    // 00000000_00100000开始的7fef0000字节，即2096064k，加起来2047M字节
+	init_memory();
 
 	while(1);
 }

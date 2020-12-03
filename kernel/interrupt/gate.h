@@ -19,7 +19,7 @@ extern struct desc_struct GDT_Table[];
 extern struct gate_struct IDT_Table[];
 extern unsigned int TSS64_Table[26]; // 4字节一个,一共26个,共104字节
 
-// 地址，属性，栈地址，处理程序入口
+// 地址，属性，栈地址，处理程序入口.
 #define _set_gate(gate_selector_addr,attr,ist,code_addr)	\
 do								\
 {	unsigned long __d0,__d1;				\

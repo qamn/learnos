@@ -197,6 +197,33 @@ kernel/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/main.c.s
 .PHONY : kernel/main.c.s
 
+kernel/memory/memory.o: kernel/memory/memory.c.o
+
+.PHONY : kernel/memory/memory.o
+
+# target to build an object file
+kernel/memory/memory.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/memory/memory.c.o
+.PHONY : kernel/memory/memory.c.o
+
+kernel/memory/memory.i: kernel/memory/memory.c.i
+
+.PHONY : kernel/memory/memory.i
+
+# target to preprocess a source file
+kernel/memory/memory.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/memory/memory.c.i
+.PHONY : kernel/memory/memory.c.i
+
+kernel/memory/memory.s: kernel/memory/memory.c.s
+
+.PHONY : kernel/memory/memory.s
+
+# target to generate assembly for a file
+kernel/memory/memory.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/memory/memory.c.s
+.PHONY : kernel/memory/memory.c.s
+
 kernel/print/printk.o: kernel/print/printk.c.o
 
 .PHONY : kernel/print/printk.o
@@ -239,6 +266,9 @@ help:
 	@echo "... kernel/main.o"
 	@echo "... kernel/main.i"
 	@echo "... kernel/main.s"
+	@echo "... kernel/memory/memory.o"
+	@echo "... kernel/memory/memory.i"
+	@echo "... kernel/memory/memory.s"
 	@echo "... kernel/print/printk.o"
 	@echo "... kernel/print/printk.i"
 	@echo "... kernel/print/printk.s"

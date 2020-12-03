@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/jack/Desktop/learnos/kernel/interrupt/trap.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/interrupt/trap.c.o"
   "/home/jack/Desktop/learnos/kernel/main.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/main.c.o"
+  "/home/jack/Desktop/learnos/kernel/memory/memory.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/memory/memory.c.o"
   "/home/jack/Desktop/learnos/kernel/print/printk.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/print/printk.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

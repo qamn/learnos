@@ -26,4 +26,4 @@ add_executable(learnos
         addfile.sh
         bochsrc
         cmd.txt
-        README.md kernel/interrupt/gate.h)
+        README.md kernel/interrupt/gate.h kernel/memory/memory.c kernel/memory/memory.h)

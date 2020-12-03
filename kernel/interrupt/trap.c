@@ -258,7 +258,7 @@ void do_virtualization_exception(unsigned long rsp,unsigned long error_code)
     while(1);
 }
 
-// 为各个中断向量设置对应的处理函数、栈指针，
+// 为各个中断向量设置对应的处理函数、栈指针，本质上就是设置GDT内的中断描述符, 这里的栈指针全部用TSS中的ist1
 void sys_vector_init()
 {
     set_trap_gate(0,1,divide_error);

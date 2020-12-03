@@ -138,6 +138,12 @@
 		<Unit filename="/home/jack/Desktop/learnos/kernel/main.c">
 			<Option target="learnos"/>
 		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/memory/memory.c">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/memory/memory.h">
+			<Option target="learnos"/>
+		</Unit>
 		<Unit filename="/home/jack/Desktop/learnos/kernel/print/font.h">
 			<Option target="learnos"/>
 		</Unit>
