@@ -1,7 +1,7 @@
 .section .text
 
 .globl _start
-_start:
+_start: /* 执行到这里, 已经运行在临时64位模式, 页表在90000处, 统一映射 */
     /* 设置段寄存器 */
 	mov	$0x10,	%ax /* 10是数据段索引 */
 	mov	%ax,	%ds
@@ -10,10 +10,10 @@ _start:
 	mov	%ax,	%ss
 	mov	$0x7E00,	%esp
 
-    /* 加载 GDTR */
+    /* 加载新的 GDTR */
     lgdt	GDT_POINTER(%rip)/* 相对当前指令来寻址 */
 
-    /* 加载 IDTR */
+    /* 加载新的 IDTR */
     lidt	IDT_POINTER(%rip)
 
     /* 切换GTD之后, 重新设置各个段寄存器 */
@@ -29,7 +29,7 @@ _start:
 	movq	$0x101000,	%rax
 	movq	%rax,		%cr3
 
-/* 用lretq跳转, 正式运行在64位模式 */
+/* 用lretq跳转, 从临时64位模式跳转到正式的64位模式 */
 	movq	switch_seg(%rip),	%rax
 	pushq	$0x08
 	pushq	%rax
@@ -88,8 +88,8 @@ setup_TSS64:
 	shrq	$32,	%rdx
 	movq	%rdx,	72(%rdi)
 
-	mov	$0x40,	%ax
-	ltr	%ax /* 将TSS描述符加载到TR寄存器 */
+	// mov	$0x40,	%ax /* 4*16/8=8, 就是GDT中索引为8的描述符, 就是TSS的描述符, 注释掉, 是因为会在main中设置*/
+	// ltr	%ax /* 将TSS描述符加载到TR寄存器 */
 
     /* 跳转到C语言的内核启动函数 */
 	movq	go_to_kernel(%rip),	%rax		/* movq address */
