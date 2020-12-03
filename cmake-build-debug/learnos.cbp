@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="learnos"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jack/Desktop/learnos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jack/Desktop/learnos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jack/Desktop/learnos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="learnos">
+				<Option output="/home/jack/Desktop/learnos/cmake-build-debug/learnos" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jack/Desktop/learnos/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jack/Desktop/learnos/kernel"/>
+					<Add directory="/home/jack/Desktop/learnos/kernel/interrupt"/>
+					<Add directory="/home/jack/Desktop/learnos/kernel/lib"/>
+					<Add directory="/home/jack/Desktop/learnos/kernel/print"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 learnos"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="learnos/fast">
+				<Option output="/home/jack/Desktop/learnos/cmake-build-debug/learnos" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jack/Desktop/learnos/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jack/Desktop/learnos/kernel"/>
+					<Add directory="/home/jack/Desktop/learnos/kernel/interrupt"/>
+					<Add directory="/home/jack/Desktop/learnos/kernel/lib"/>
+					<Add directory="/home/jack/Desktop/learnos/kernel/print"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 learnos/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/jack/Desktop/learnos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jack/Desktop/learnos/README.md">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/addfile.sh">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/bochsrc">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/bootloader/Makefile">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/bootloader/boot.asm">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/bootloader/loader.asm">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/cmd.txt">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/Kernel.lds">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/Makefile">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/head.S">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/gate.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/trap.c">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/trap.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/lib/lib.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/lib/linkage.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/main.c">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/print/font.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/print/printk.c">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/print/printk.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
