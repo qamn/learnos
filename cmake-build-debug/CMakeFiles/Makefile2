@@ -94,12 +94,12 @@ clean: CMakeFiles/learnos.dir/clean
 CMakeFiles/learnos.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target learnos"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target learnos"
 .PHONY : CMakeFiles/learnos.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/learnos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/learnos.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/learnos.dir/rule

@@ -143,6 +143,33 @@ learnos/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/build
 .PHONY : learnos/fast
 
+kernel/interrupt/interrupt.o: kernel/interrupt/interrupt.c.o
+
+.PHONY : kernel/interrupt/interrupt.o
+
+# target to build an object file
+kernel/interrupt/interrupt.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/interrupt/interrupt.c.o
+.PHONY : kernel/interrupt/interrupt.c.o
+
+kernel/interrupt/interrupt.i: kernel/interrupt/interrupt.c.i
+
+.PHONY : kernel/interrupt/interrupt.i
+
+# target to preprocess a source file
+kernel/interrupt/interrupt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/interrupt/interrupt.c.i
+.PHONY : kernel/interrupt/interrupt.c.i
+
+kernel/interrupt/interrupt.s: kernel/interrupt/interrupt.c.s
+
+.PHONY : kernel/interrupt/interrupt.s
+
+# target to generate assembly for a file
+kernel/interrupt/interrupt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/interrupt/interrupt.c.s
+.PHONY : kernel/interrupt/interrupt.c.s
+
 kernel/interrupt/trap.o: kernel/interrupt/trap.c.o
 
 .PHONY : kernel/interrupt/trap.o
@@ -260,6 +287,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... learnos"
+	@echo "... kernel/interrupt/interrupt.o"
+	@echo "... kernel/interrupt/interrupt.i"
+	@echo "... kernel/interrupt/interrupt.s"
 	@echo "... kernel/interrupt/trap.o"
 	@echo "... kernel/interrupt/trap.i"
 	@echo "... kernel/interrupt/trap.s"

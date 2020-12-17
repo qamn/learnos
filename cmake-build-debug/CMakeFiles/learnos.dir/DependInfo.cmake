@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/jack/Desktop/learnos/kernel/interrupt/interrupt.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/interrupt/interrupt.c.o"
   "/home/jack/Desktop/learnos/kernel/interrupt/trap.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/interrupt/trap.c.o"
   "/home/jack/Desktop/learnos/kernel/main.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/main.c.o"
   "/home/jack/Desktop/learnos/kernel/memory/memory.c" "/home/jack/Desktop/learnos/cmake-build-debug/CMakeFiles/learnos.dir/kernel/memory/memory.c.o"

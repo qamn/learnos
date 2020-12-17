@@ -123,6 +123,12 @@
 		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/gate.h">
 			<Option target="learnos"/>
 		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/interrupt.c">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/interrupt.h">
+			<Option target="learnos"/>
+		</Unit>
 		<Unit filename="/home/jack/Desktop/learnos/kernel/interrupt/trap.c">
 			<Option target="learnos"/>
 		</Unit>

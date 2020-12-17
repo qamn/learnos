@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/learnos.dir/kernel/interrupt/trap.c.o CMakeFiles/learnos.dir/kernel/print/printk.c.o CMakeFiles/learnos.dir/kernel/main.c.o CMakeFiles/learnos.dir/kernel/memory/memory.c.o  -o learnos 
+/usr/bin/cc -g   CMakeFiles/learnos.dir/kernel/interrupt/trap.c.o CMakeFiles/learnos.dir/kernel/print/printk.c.o CMakeFiles/learnos.dir/kernel/main.c.o CMakeFiles/learnos.dir/kernel/memory/memory.c.o CMakeFiles/learnos.dir/kernel/interrupt/interrupt.c.o  -o learnos 
