@@ -278,6 +278,33 @@ kernel/print/printk.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/print/printk.c.s
 .PHONY : kernel/print/printk.c.s
 
+kernel/task/task.o: kernel/task/task.c.o
+
+.PHONY : kernel/task/task.o
+
+# target to build an object file
+kernel/task/task.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/task/task.c.o
+.PHONY : kernel/task/task.c.o
+
+kernel/task/task.i: kernel/task/task.c.i
+
+.PHONY : kernel/task/task.i
+
+# target to preprocess a source file
+kernel/task/task.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/task/task.c.i
+.PHONY : kernel/task/task.c.i
+
+kernel/task/task.s: kernel/task/task.c.s
+
+.PHONY : kernel/task/task.s
+
+# target to generate assembly for a file
+kernel/task/task.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/learnos.dir/build.make CMakeFiles/learnos.dir/kernel/task/task.c.s
+.PHONY : kernel/task/task.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -302,6 +329,9 @@ help:
 	@echo "... kernel/print/printk.o"
 	@echo "... kernel/print/printk.i"
 	@echo "... kernel/print/printk.s"
+	@echo "... kernel/task/task.o"
+	@echo "... kernel/task/task.i"
+	@echo "... kernel/task/task.s"
 .PHONY : help
 
 

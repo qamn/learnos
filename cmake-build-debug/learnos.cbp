@@ -159,6 +159,18 @@
 		<Unit filename="/home/jack/Desktop/learnos/kernel/print/printk.h">
 			<Option target="learnos"/>
 		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/task/cpu.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/task/ptrace.h">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/task/task.c">
+			<Option target="learnos"/>
+		</Unit>
+		<Unit filename="/home/jack/Desktop/learnos/kernel/task/task.h">
+			<Option target="learnos"/>
+		</Unit>
 		<Unit filename="/home/jack/Desktop/learnos/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

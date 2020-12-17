@@ -75,6 +75,7 @@ inline void set_system_intr_gate(unsigned int n,unsigned char ist,void * addr)	/
     _set_gate(IDT_Table + n , 0xEE , ist , addr);	//P,DPL=3,TYPE=E
 }
 
+// 设置任务状态段
 void set_tss64(unsigned long rsp0,unsigned long rsp1,unsigned long rsp2,unsigned long ist1,unsigned long ist2,unsigned long ist3,
                unsigned long ist4,unsigned long ist5,unsigned long ist6,unsigned long ist7)
 {

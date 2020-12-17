@@ -109,6 +109,7 @@ void init_interrupt()
     io_out8(0xa1,0xff);
 
     sti();
+    color_printk(RED,BLACK,"8259A init done! \n");
 }
 
 // 统一的执行函数

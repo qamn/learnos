@@ -1,4 +1,5 @@
 /*==================================================================*/
+#include "lib/linkage.h"
 .section .text
 
 .globl _start
@@ -79,6 +80,8 @@ setup_TSS64:
 go_to_kernel:
 	.quad	Start_Kernel
 
+ENTRY(_stack_start) /* init任务的末尾作为栈的基址，向左生长。在main.c中extern使用 */
+	.quad	init_task_union + 32768
 
 /* 页表 */
 .align 8

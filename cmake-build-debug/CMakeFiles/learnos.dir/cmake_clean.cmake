@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/learnos.dir/kernel/main.c.o"
   "CMakeFiles/learnos.dir/kernel/memory/memory.c.o"
   "CMakeFiles/learnos.dir/kernel/print/printk.c.o"
+  "CMakeFiles/learnos.dir/kernel/task/task.c.o"
   "learnos"
   "learnos.pdb"
 )

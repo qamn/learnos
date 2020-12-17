@@ -52,11 +52,11 @@ void init_memory() {
     struct E820 *p = NULL;
 
     // 读取内存信息, 只有类型1才是可用的
-    color_printk(BLUE, WHITE,
-                 "Display Physics Address MAP,Type(1:RAM,2:ROM or Reserved,3:ACPI Reclaim Memory,4:ACPI NVS Memory,Others:Undefine)\n");
+//    color_printk(BLUE, WHITE,
+//                 "Display Physics Address MAP,Type(1:RAM,  2:ROM or Reserved,  3:ACPI Reclaim Memory,  4:ACPI NVS Memory,  Others:Undefine)\n");
     p = (struct E820 *) 0xffff800000007e00;
     for (i = 0; i < 32; i++) {
-        color_printk(ORANGE, BLACK, "Address:%#018lx\tLength:%#018lx\tType:%#010x\n", p->address, p->length, p->type);
+//        color_printk(ORANGE, BLACK, "Address:%#018lx\tLength:%#018lx\tType:%#010x\n", p->address, p->length, p->type);
         unsigned long tmp = 0;
         if (p->type == 1) //类型是1的就是可用的,才计算长度
             TotalMem += p->length;
@@ -162,15 +162,15 @@ void init_memory() {
 
     memory_management_struct.zones_length =
             (memory_management_struct.zones_size * sizeof(struct Zone) + sizeof(long) - 1) & (~(sizeof(long) - 1));
-    color_printk(ORANGE, BLACK, "bits_map:%#018lx,bits_size:%#018lx,bits_length:%#018lx\n",
-                 memory_management_struct.bits_map, memory_management_struct.bits_size,
-                 memory_management_struct.bits_length);
-    color_printk(ORANGE, BLACK, "pages_struct:%#018lx,pages_size:%#018lx,pages_length:%#018lx\n",
-                 memory_management_struct.pages_struct, memory_management_struct.pages_size,
-                 memory_management_struct.pages_length);
-    color_printk(ORANGE, BLACK, "zones_struct:%#018lx,zones_size:%#018lx,zones_length:%#018lx\n",
-                 memory_management_struct.zones_struct, memory_management_struct.zones_size,
-                 memory_management_struct.zones_length);
+//    color_printk(ORANGE, BLACK, "bits_map:%#018lx,bits_size:%#018lx,bits_length:%#018lx\n",
+//                 memory_management_struct.bits_map, memory_management_struct.bits_size,
+//                 memory_management_struct.bits_length);
+//    color_printk(ORANGE, BLACK, "pages_struct:%#018lx,pages_size:%#018lx,pages_length:%#018lx\n",
+//                 memory_management_struct.pages_struct, memory_management_struct.pages_size,
+//                 memory_management_struct.pages_length);
+//    color_printk(ORANGE, BLACK, "zones_struct:%#018lx,zones_size:%#018lx,zones_length:%#018lx\n",
+//                 memory_management_struct.zones_struct, memory_management_struct.zones_size,
+//                 memory_management_struct.zones_length);
 
     ZONE_DMA_INDEX = 0;    //need rewrite in the future
     ZONE_NORMAL_INDEX = 0;    //need rewrite in the future
@@ -178,9 +178,9 @@ void init_memory() {
     for (i = 0; i < memory_management_struct.zones_size; i++)    //need rewrite in the future
     {
         struct Zone *z = memory_management_struct.zones_struct + i;
-        color_printk(ORANGE, BLACK,
-                     "zone_start_address:%#018lx,zone_end_address:%#018lx,zone_length:%#018lx,pages_group:%#018lx,pages_length:%#018lx\n",
-                     z->zone_start_address, z->zone_end_address, z->zone_length, z->pages_group, z->pages_length);
+//        color_printk(ORANGE, BLACK,
+//                     "zone_start_address:%#018lx,zone_end_address:%#018lx,zone_length:%#018lx,pages_group:%#018lx,pages_length:%#018lx\n",
+//                     z->zone_start_address, z->zone_end_address, z->zone_length, z->pages_group, z->pages_length);
         if (z->zone_start_address == 0x100000000)
             ZONE_UNMAPED_INDEX = i;
     }
@@ -189,11 +189,11 @@ void init_memory() {
                                                               memory_management_struct.zones_length +
                                                               sizeof(long) * 32) & (~(sizeof(long) -
                                                                                       1));    ////need a blank to separate memory_management_struct
-    color_printk(ORANGE, BLACK,
-                 "start_code:%#018lx,end_code:%#018lx,end_data:%#018lx,end_brk:%#018lx,end_of_struct:%#018lx\n",
-                 memory_management_struct.start_code, memory_management_struct.end_code,
-                 memory_management_struct.end_data, memory_management_struct.end_brk,
-                 memory_management_struct.end_of_struct);
+//    color_printk(ORANGE, BLACK,
+//                 "start_code:%#018lx,end_code:%#018lx,end_data:%#018lx,end_brk:%#018lx,end_of_struct:%#018lx\n",
+//                 memory_management_struct.start_code, memory_management_struct.end_code,
+//                 memory_management_struct.end_data, memory_management_struct.end_brk,
+//                 memory_management_struct.end_of_struct);
 
     i = Virt_To_Phy(memory_management_struct.end_of_struct) >> PAGE_2M_SHIFT; // 内核占了 i 个页
 
@@ -204,7 +204,7 @@ void init_memory() {
     Global_CR3 = Get_gdt();
     color_printk(INDIGO, BLACK, "Global_CR3\t:%#018lx\n", Global_CR3);
     color_printk(INDIGO, BLACK, "*Global_CR3\t:%#018lx\n", *Phy_To_Virt(Global_CR3) & (~0xff));
-    color_printk(PURPLE, BLACK, "**Global_CR3\t:%#018lx\n", *Phy_To_Virt(*Phy_To_Virt(Global_CR3) & (~0xff)) & (~0xff));
+    color_printk(INDIGO, BLACK, "**Global_CR3\t:%#018lx\n", *Phy_To_Virt(*Phy_To_Virt(Global_CR3) & (~0xff)) & (~0xff));
 
     // 这里消除统一映射的页表，这之后只能通过ffff开头的线性地址来访问。
     for (i = 0; i < 10; i++)
@@ -238,8 +238,6 @@ struct Page *alloc_pages(int zone_select, int number, unsigned long page_flags) 
             color_printk(RED, BLACK, "alloc_pages error zone_select index\n");
             return NULL;
     }
-    color_printk(INDIGO, BLACK, "zone_type:%d, zone_start:%d, zone_end:%d\n", zone_select, zone_start, zone_end);
-
     for (i = zone_start; i <= zone_end; i++) {
         struct Zone *z;
         unsigned long j;
