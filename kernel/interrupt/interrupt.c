@@ -105,8 +105,8 @@ void init_interrupt()
     io_out8(0xa1,0x28);
     io_out8(0xa1,0x02);
     io_out8(0xa1,0x01);
-    io_out8(0x21,0x00);
-    io_out8(0xa1,0x00);
+    io_out8(0x21,0xfd);
+    io_out8(0xa1,0xff);
 
     sti();
 }
@@ -114,7 +114,10 @@ void init_interrupt()
 // 统一的执行函数
 void do_IRQ(unsigned long regs,unsigned long nr)	//regs:rsp,nr
 {
+    unsigned char x;
     color_printk(RED,BLACK,"do_IRQ:%#08x\t",nr);
+    x = io_in8(0x60);
+    color_printk(RED,BLACK,"key code:%d\n",x);
     io_out8(0x20,0x20);
 }
 
